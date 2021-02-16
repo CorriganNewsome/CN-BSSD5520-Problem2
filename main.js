@@ -1,32 +1,27 @@
 'use strict';
 
+let userInput = [];
+const secret = 'jhdjghfk';
+
 document.addEventListener('DOMContentLoaded', () => {
 	const surveyButton = document.getElementById('submit');
 	surveyButton.addEventListener('click', () => {
-		const nameInput = document.getElementById('name');
-		//console.log('Program has started.');
-		const contentDiv = document.getElementById('message');
-		contentDiv.innerHTML += nameInput.value;
-		const surveyButton = document.getElementById('submit');
-		let contentDivArray = [];
+		const inputField = document.getElementById('name');
+		userInput.push(inputField.value);
 
-		if (surveyButton.innerHTML === 'Submit') {
-			surveyButton.innerHTML === 'Erase';
-			eraseText();
-		} else if (surveyButton.innerHTML === 'erase') {
-			surveyButton.innerHTML === 'erase';
-			eraseText();
+		userInput[userInput.length - 1];
+
+		if (userInput === '') {
+			const errorMsg = document.getElementById('error');
+			errorMsg.innerHTML = 'You made an error';
+		} else {
+			const errorMsg = document.getElementById('error');
+			errorMsg.innerHTML = '';
+			const entries = document.getElementById('entries');
+			entries.innerHTML = userInput;
+			inputField.value = '';
+			inputField.focus();
 		}
-
-		if (nameInput.value === ' ') {
-			contentDiv.innerHTML = 'Error, please make a correct selection';
-		}
-
-		contentDiv.value = contentDivArray;
+		console.log(userInput);
 	});
 });
-
-function eraseText() {
-	nameInput.replace('');
-	contentDiv.replace('');
-}
